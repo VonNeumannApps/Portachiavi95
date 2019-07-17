@@ -17,5 +17,9 @@
 
     <string name="SAVED_MESSAGE">Salvataggio effettuato!</string>
     <string name="PWD_WRONG_LENGTH_MESSAGE">La password deve essere almeno di 8 caratteri</string>
+    <string name="NUOVO_ACCOUNT">NUOVO ACCOUNT</string>
+    <string name="DESCRIPTION_TEXT">Descrizione:</string>
+    <string name="USERNAME_TEXT">Username</string>
+    <string name="EMAIL_TEXT">Email</string>
 
 </resources>
