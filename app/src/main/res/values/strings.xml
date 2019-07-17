@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Portachiavi95</string>
 
+    <string name="USER_DATA">user_data</string>
+    
     <string name="Application_Description">Inserire la password </string>
 
     <string name="APPLICATION_MASTER_PWD_SET_TEXT">Impostare la password di accesso all\'applicazione per garantire maggiore sicurezza.</string>
