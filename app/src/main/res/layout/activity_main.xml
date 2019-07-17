@@ -63,6 +63,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
             android:drawableStart="@drawable/baseline_select_all_black_24"
             android:text="@string/SELECT_ALL_BUTTON"
             />
