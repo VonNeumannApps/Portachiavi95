@@ -38,20 +38,19 @@ public class DBManager extends SQLiteOpenHelper {
     // TODO funzioni che servono: lettura account, inserimento
 
     public void insertNewAccount(SQLiteDatabase sqLiteDatabase, Bundle account) {
+
         // TODO: recuperare db, aprirlo in scrittura, salvare i dati nella tabella
-        SQLiteDatabase db = getWritableDatabase();
+        try(SQLiteDatabase db = getWritableDatabase()) {
+            // tipo di dati "Bundle", sono chiave-valore
+            // db insert si aspetta oggetto di tipo ContentValues
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("descrizione", account.getString("descrizione"));
+            contentValues.put("username", account.getString("username"));
+            contentValues.put("password", account.getString("password"));
+            contentValues.put("mail", account.getString("mail"));
 
-        // tipo di dati "Bundle", sono chiave-valore
-        // db insert si aspetta oggetto di tipo ContentValues
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("descrizione", account.getString("descrizione"));
-        contentValues.put("username", account.getString("username"));
-        contentValues.put("password", account.getString("password"));
-        contentValues.put("mail", account.getString("mail"));
-
-        db.insert("accounts", null, contentValues);
-
-        db.close();
+            db.insert("accounts", null, contentValues);
+        }
 
     }
 }
