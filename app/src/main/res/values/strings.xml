@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Portachiavi95</string>
+
+    <string name="Application_Description">Inserire la password </string>
+
+    <string name="APPLICATION_MASTER_PWD_SET_TEXT">Impostare la password di accesso all\'applicazione per garantire maggiore sicurezza.</string>
+    <string name="APPLICATION_MASTER_PWD_EDIT_TEXT">Premere sul pulsante modifica per modificare la password di accesso.</string>
+    <string name="Password_advice">stimola la diuresi</string>
+
+    <string name="PASSWORD_TEXT">Password</string>
+    <string name="SAVE_PWD_BUTTON_TEXT">Salva</string>
+    <string name="ELENCO_ACCOUNT">ELENCO ACCOUNT</string>
+
+</resources>
