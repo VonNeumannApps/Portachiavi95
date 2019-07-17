@@ -69,6 +69,15 @@
             android:text="@string/SELECT_ALL_BUTTON"
             />
 
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:drawableStart="@drawable/baseline_delete_black_24"
+            android:text="@string/DELETE_BUTTON"
+            />
+
     </FrameLayout>
 
 </LinearLayout>

@@ -11,5 +11,6 @@
     <string name="SAVE_PWD_BUTTON_TEXT">Salva</string>
     <string name="ELENCO_ACCOUNT">ELENCO ACCOUNT</string>
     <string name="SELECT_ALL_BUTTON">Seleziona tutto</string>
+    <string name="DELETE_BUTTON">Elimina</string>
 
 </resources>
