@@ -53,4 +53,25 @@ public class DBManager extends SQLiteOpenHelper {
         }
 
     }
+
+    public void updateAccount(Bundle account) {
+
+        try(SQLiteDatabase db = getWritableDatabase()) {
+
+            ContentValues contentValues = new ContentValues();
+
+            contentValues.put("id", account.getInt("id"));
+            contentValues.put("descrizione", account.getString("descrizione"));
+            contentValues.put("username", account.getString("username"));
+            contentValues.put("password", account.getString("password"));
+            contentValues.put("mail", account.getString("mail"));
+
+            String account_id = String.valueOf(account.getInt("id"));
+
+            String[] args = new String[]{account_id};
+
+            db.update("accounts", contentValues, "id=?", args);
+
+        }
+    }
 }
