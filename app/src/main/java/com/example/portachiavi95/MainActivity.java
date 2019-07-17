@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
             //mi devo loggare
             openLoginActivity();
         }
+
+        // TODO: layout account detail activity è fatto, va aggiunta logica per passare a quella activity
     }
 
     void openLoginActivity(){
