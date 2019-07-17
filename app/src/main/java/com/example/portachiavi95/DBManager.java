@@ -23,6 +23,12 @@ public class DBManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // prima funzione, eseguita solo quando il db non esiste
+
+        String query = "CREATE TABLE Accounts (id INTEGER PRIMARY KEY AUTOINCREMENT, descrizione TEXT, username TEXT, password TEXT, mail TEXT) ";
+
+        sqLiteDatabase.execSQL(query);
+
+
     }
 
     @Override
