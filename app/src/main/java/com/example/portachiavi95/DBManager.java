@@ -13,7 +13,8 @@ public class DBManager extends SQLiteOpenHelper {
 
      */
 
-    // TODO ci servono nome db e versione
+    public static final String DATABASE_NAME = "db";
+    public static final int DATABASE_VERSION = 1;
 
     public DBManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
