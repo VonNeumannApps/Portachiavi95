@@ -20,6 +20,6 @@
     <string name="NUOVO_ACCOUNT">NUOVO ACCOUNT</string>
     <string name="DESCRIPTION_TEXT">Descrizione:</string>
     <string name="USERNAME_TEXT">Username</string>
-    <string name="EMAIL_TEXT">Email</string>
+    <string name="MAIL_TEXT">E-mail</string>
 
 </resources>
