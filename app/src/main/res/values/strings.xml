@@ -15,4 +15,7 @@
     <string name="SELECT_ALL_BUTTON">Seleziona tutto</string>
     <string name="DELETE_BUTTON">Elimina</string>
 
+    <string name="SAVED_MESSAGE">Salvataggio effettuato!</string>
+    <string name="PWD_WRONG_LENGTH_MESSAGE">La password deve essere almeno di 8 caratteri</string>
+
 </resources>
