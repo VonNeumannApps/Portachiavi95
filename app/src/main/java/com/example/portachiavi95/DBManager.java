@@ -29,7 +29,12 @@ public class DBManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // prima funzione, eseguita solo quando il db non esiste
 
-        String query = "CREATE TABLE accounts (id INTEGER PRIMARY KEY AUTOINCREMENT, descrizione TEXT, username TEXT, password TEXT, mail TEXT) ";
+        String query = "CREATE TABLE accounts " +
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "descrizione TEXT, " +
+                "username TEXT, " +
+                "password TEXT, " +
+                "mail TEXT) ";
 
         sqLiteDatabase.execSQL(query);
     }
@@ -52,7 +57,6 @@ public class DBManager extends SQLiteOpenHelper {
 
             db.insert("accounts", null, contentValues);
         }
-
     }
 
     public void updateAccount(Bundle account) {
