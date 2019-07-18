@@ -57,7 +57,7 @@ public class DBManager extends SQLiteOpenHelper {
             contentValues.put("descrizione", account.getString("descrizione"));
             contentValues.put("username", account.getString("username"));
             contentValues.put("password", account.getString("password"));
-            contentValues.put("mail", account.getString("mail"));
+            contentValues.put(Utilities.MAIL_COL, account.getString(Utilities.MAIL_COL));
 
             db.insert("accounts", null, contentValues);
         }
@@ -73,7 +73,7 @@ public class DBManager extends SQLiteOpenHelper {
             contentValues.put("descrizione", account.getString("descrizione"));
             contentValues.put("username", account.getString("username"));
             contentValues.put("password", account.getString("password"));
-            contentValues.put("mail", account.getString("mail"));
+            contentValues.put(Utilities.MAIL_COL, account.getString(Utilities.MAIL_COL));
 
             String account_id = String.valueOf(account.getInt("id"));
 
@@ -102,6 +102,7 @@ public class DBManager extends SQLiteOpenHelper {
                     putStringFromCursorIntoBundle(cur, account, "descrizione");
                     putStringFromCursorIntoBundle(cur, account, "username");
                     putStringFromCursorIntoBundle(cur, account, "password");
+                    putStringFromCursorIntoBundle(cur, account, Utilities.MAIL_COL);
 
                     account.putBoolean("selected", false);
 
