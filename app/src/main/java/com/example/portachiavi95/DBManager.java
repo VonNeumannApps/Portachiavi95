@@ -46,7 +46,7 @@ public class DBManager extends SQLiteOpenHelper {
         // funzionalità che non useremo
     }
 
-    public void insertNewAccount(SQLiteDatabase sqLiteDatabase, Bundle account) {
+    public void insertNewAccount(Bundle account) {
 
         try(SQLiteDatabase db = getWritableDatabase()) {
 

@@ -74,7 +74,10 @@ public class AccountDetailActivity extends AppCompatActivity {
 
         if(isNewAccount) {
 
-            // dbManager.
+            dbManager.insertNewAccount(account);
+        }
+        else {
+            dbManager.updateAccount(account);
         }
 
 
