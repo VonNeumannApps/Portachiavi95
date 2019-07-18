@@ -99,11 +99,12 @@ public class DBManager extends SQLiteOpenHelper {
                     putStringFromCursorIntoBundle(cur, account, "descrizione");
                     putStringFromCursorIntoBundle(cur, account, "username");
                     putStringFromCursorIntoBundle(cur, account, "password");
-                    // TODO unfinished
+
+                    accounts.add(account);
+                    cur.moveToNext();
                 }
             }
 
-            db.execSQL(query);
         }
 
         return accounts;
