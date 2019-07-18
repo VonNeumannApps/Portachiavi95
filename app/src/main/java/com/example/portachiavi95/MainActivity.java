@@ -1,8 +1,10 @@
 package com.example.portachiavi95;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -74,6 +77,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button deleteBtn = findViewById(R.id.deleteButton);
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                deleteSelectedAccounts();
+            }
+        });
     }
 
     void openAccountDetailActivity(Bundle account) {
@@ -180,6 +192,31 @@ public class MainActivity extends AppCompatActivity {
         this.accounts.addAll(dbManager.getAccounts());
 
         this.baseAdapter.notifyDataSetChanged();
+    }
+
+    void deleteSelectedAccounts() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(R.string.app_name);
+        builder.setMessage(R.string.DELETE_CONFIRMATION_MESSAGE);
+
+        builder.setCancelable(false);// utente deve scegliere o si o no
+        builder.setPositiveButton(getString(R.string.Yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // TODO procedi con cancellazione
+
+                // TODO notificare dataset changed
+            }
+        });
+
+        // la dialog viene chiusa automaticamente passando listener null
+        builder.setNegativeButton(getString(R.string.No), null);
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
     }
 
     void openLoginActivity(){
