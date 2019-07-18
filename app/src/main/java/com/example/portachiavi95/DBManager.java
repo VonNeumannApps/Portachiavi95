@@ -101,6 +101,8 @@ public class DBManager extends SQLiteOpenHelper {
                     putStringFromCursorIntoBundle(cur, account, "username");
                     putStringFromCursorIntoBundle(cur, account, "password");
 
+                    account.putBoolean("selected", false);
+
                     accounts.add(account);
                     cur.moveToNext();
                 }
