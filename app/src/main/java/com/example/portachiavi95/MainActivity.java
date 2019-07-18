@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -41,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
         loadAccounts();
         ListView accountsLV = findViewById(R.id.accountListView);
         accountsLV.setAdapter(baseAdapter);
+
+        accountsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Bundle account = accounts.get(i);
+                openAccountDetailActivity(account);
+            }
+        });
 
         ImageView addAccountBtn = findViewById(R.id.addAccountButton);
 
@@ -135,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 TextView descTV = view.findViewById(R.id.descriptionTextView);
                 TextView mailTV = view.findViewById(R.id.mailTextView);
                 descTV.setText(account.getString("descrizione"));
-                mailTV.setText(account.getString("mail"));
+                mailTV.setText(account.getString(Utilities.MAIL_COL));
 
                 ImageView checkIV = view.findViewById(R.id.checkImageView);
 
