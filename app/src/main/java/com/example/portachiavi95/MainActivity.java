@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         initializeAdapter();
         loadAccounts();
-        ListView accountsLV = findViewById(R.id.accountListView);
+        final ListView accountsLV = findViewById(R.id.accountListView);
         accountsLV.setAdapter(baseAdapter);
 
         accountsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -48,6 +48,18 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Bundle account = accounts.get(i);
                 openAccountDetailActivity(account);
+            }
+        });
+
+        accountsLV.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                // todo selezionare singolo account
+                Bundle account = accounts.get(i);
+                selectCurrentAccount(account);
+
+                return true;
             }
         });
 
@@ -176,6 +188,24 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
 
         startActivity(intent);
+    }
+
+    void selectCurrentAccount(Bundle account) {
+
+        boolean isSelected = account.getBoolean("selected");
+
+        // account.putBoolean("selected", !isSelected);
+        // cicliamo negli accounts perché per qualche motivo, su android, a differenza di iOS
+        // account non è lo stesso della lista di account (sembra assurdo..)
+        for(Bundle tmpAccount : accounts) {
+            if(tmpAccount.getInt("id") == account.getInt("id")) {
+
+                tmpAccount.putBoolean("selected", !isSelected);
+                break;
+            }
+        }
+
+        baseAdapter.notifyDataSetChanged();
     }
 
     boolean isLogged() {
