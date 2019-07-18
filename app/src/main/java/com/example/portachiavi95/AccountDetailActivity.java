@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AccountDetailActivity extends AppCompatActivity {
 
@@ -55,7 +56,7 @@ public class AccountDetailActivity extends AppCompatActivity {
                 // TODO salvare/controllare input utente
 
                 // verificare sela chiamata all'inflater getsystemservice funziona (cambiata per compatibilità API < 23)
-
+                saveAccountData();
             }
         });
 
@@ -70,7 +71,7 @@ public class AccountDetailActivity extends AppCompatActivity {
         account.putString("descrizione",  descET.getText().toString());
         account.putString("username",  userET.getText().toString());
         account.putString("password",  passET.getText().toString());
-        account.putString("email",  mailET.getText().toString());
+        account.putString("mail",  mailET.getText().toString());
 
         if(isNewAccount) {
 
@@ -80,6 +81,10 @@ public class AccountDetailActivity extends AppCompatActivity {
             dbManager.updateAccount(account);
         }
 
+        Toast.makeText(this, R.string.SAVED_MESSAGE, Toast.LENGTH_SHORT);
 
+        setResult(RESULT_OK);
+
+        finish();
     }
 }

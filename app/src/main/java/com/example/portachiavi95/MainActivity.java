@@ -76,13 +76,18 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
 
             case Utilities.ADD_OR_EDIT_CODE: {
-                loadAccounts();
-                // TODO un pò inefficiente ricaricare tutti gli account dal db ogni volta
-                // che se ne aggiunge/modifica uno
-                // si potrebbe modificare solo quello, su accounts e sul db
+
+                if(resultCode == RESULT_OK) {
+
+                    loadAccounts();
+                    // TODO un pò inefficiente ricaricare tutti gli account dal db ogni volta
+                    // che se ne aggiunge/modifica uno
+                    // si potrebbe modificare solo quello, su accounts e sul db
+                }
                 break;
             }
             default: {
+
                 super.onActivityResult(requestCode, resultCode, data);
             }
         }
