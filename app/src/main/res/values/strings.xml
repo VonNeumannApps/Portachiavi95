@@ -22,4 +22,8 @@
     <string name="USERNAME_TEXT">Username</string>
     <string name="MAIL_TEXT">E-mail</string>
 
+    <string name="EDIT_ACCOUNT">Modifica account - %1$s</string>
+    <!--NB si possono mettere dei parametri nei valori stringa, con %1$s -->
+    <!--%1$ (1 sta per il primo parametro, $s indica tipo stringa  -->
+
 </resources>
