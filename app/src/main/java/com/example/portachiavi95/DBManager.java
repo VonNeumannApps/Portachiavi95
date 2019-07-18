@@ -25,6 +25,8 @@ public class DBManager extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
+    // NB onCreate è chiamata solo al primo accesso
+    // anche se creo più istanza di DBManager
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // prima funzione, eseguita solo quando il db non esiste

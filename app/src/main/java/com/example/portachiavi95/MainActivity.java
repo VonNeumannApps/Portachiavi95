@@ -1,5 +1,6 @@
 package com.example.portachiavi95;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
@@ -41,7 +42,52 @@ public class MainActivity extends AppCompatActivity {
         ListView accountsLV = findViewById(R.id.accountListView);
         accountsLV.setAdapter(baseAdapter);
 
+        ImageView addAccountBtn = findViewById(R.id.addAccountButton);
+
+        addAccountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                openAccountDetailActivity(new Bundle());// problema memory leak: se poi si annulla la creazione dell'account
+                // andrebbe creato solo facendo "salva"
+            }
+        });
+
         // TODO: layout account detail activity è fatto, va aggiunta logica per passare a quella activity
+    }
+
+    void openAccountDetailActivity(Bundle account) {
+
+        Intent intent = new Intent(MainActivity.this, AccountDetailActivity.class);
+
+        // serve per dire all'altra activity che riceve dei dati,
+        // in questo caso il bundle dell'account
+        intent.putExtras(account);
+
+        // result: ADD_OR_EDIT_CODE, per dire che ho aggiunto o modificato un elemento
+        startActivityForResult(intent, Utilities.ADD_OR_EDIT_CODE);
+
+    }
+
+    // per sapere quando torna indietro dall'altra activity (dalla AccountDetail activity)
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        switch (requestCode) {
+
+            case Utilities.ADD_OR_EDIT_CODE: {
+                loadAccounts();
+                // TODO un pò inefficiente ricaricare tutti gli account dal db ogni volta
+                // che se ne aggiunge/modifica uno
+                // si potrebbe modificare solo quello, su accounts e sul db
+                break;
+            }
+            default: {
+                super.onActivityResult(requestCode, resultCode, data);
+            }
+        }
+
+
     }
 
     void initializeAdapter() {
