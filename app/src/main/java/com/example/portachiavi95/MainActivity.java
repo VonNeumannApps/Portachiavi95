@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: layout account detail activity è fatto, va aggiunta logica per passare a quella activity
     }
 
     void openAccountDetailActivity(Bundle account) {
