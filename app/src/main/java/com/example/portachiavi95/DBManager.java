@@ -116,6 +116,46 @@ public class DBManager extends SQLiteOpenHelper {
         return accounts;
     }
 
+    public static String getDeletionQuerySelectedAccounts(ArrayList<Bundle> accounts) {
+
+        String query = "DELETE FROM accounts WHERE id IN (";
+
+        boolean isFirstIdToDelete = true;
+
+        for(Bundle account : accounts) {
+
+            if(account.getBoolean("selected"))
+            {
+                int idToAdd = account.getInt("id");
+
+                if(isFirstIdToDelete) {
+
+                    query = query + idToAdd;
+                    isFirstIdToDelete = false; // abbiamo appena aggiunto il primo
+                }
+                else {
+                    query = query + ", " + idToAdd;
+                }
+            }
+        }
+
+        query = query + ")";
+
+        return query;
+    }
+
+    public void deleteSelectedAccounts(ArrayList<Bundle> accounts) {
+
+        String query = getDeletionQuerySelectedAccounts(accounts);
+
+        try(SQLiteDatabase db = getWritableDatabase()) {
+
+            db.execSQL(query);
+        }
+
+        // TODO we need unit tests
+    }
+
     static private void putStringFromCursorIntoBundle(Cursor cur, Bundle bundle, String columnName){
 
         int columnIndex = cur.getColumnIndex(columnName); // indice della colonna con nome columName

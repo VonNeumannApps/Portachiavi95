@@ -29,5 +29,6 @@
     <string name="DELETE_CONFIRMATION_MESSAGE">Sei sicuro di voler eliminare gli elementi selezionati?</string>
     <string name="Yes">Si</string>
     <string name="No">No</string>
+    <string name="DELETE_SUCCESS_MESSAGE">Accounts eliminati con successo!</string>
 
 </resources>

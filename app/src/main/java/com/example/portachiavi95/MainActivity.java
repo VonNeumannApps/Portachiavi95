@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                deleteSelectedAccounts();
+                openDeletionConfirmationDialog();
             }
         });
     }
@@ -194,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         this.baseAdapter.notifyDataSetChanged();
     }
 
-    void deleteSelectedAccounts() {
+    void openDeletionConfirmationDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -205,8 +206,8 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton(getString(R.string.Yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // TODO procedi con cancellazione
 
+                deleteAccounts(); // procedi con cancellazione
                 // TODO notificare dataset changed
             }
         });
@@ -217,6 +218,27 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
+    }
+
+    void deleteAccounts() {
+
+        ArrayList<Bundle> accountsToBeDeleted = new ArrayList<>();
+
+        // questo for sarebbe superfluo perché ho già messo il controllo nel metodo del db manager
+        for(Bundle account : accounts) {
+            if(account.getBoolean("selected")) {
+
+                accountsToBeDeleted.add(account);
+            }
+        }
+
+        dbManager.deleteSelectedAccounts(accountsToBeDeleted);
+
+        Toast.makeText(this, R.string.DELETE_SUCCESS_MESSAGE, Toast.LENGTH_SHORT).show();
+
+        //non facciamo "notify changed" perché in questo caso è cambiato il numero degli account
+        // e dobbiamo ricaricarli tutti dal db
+        loadAccounts();
     }
 
     void openLoginActivity(){
