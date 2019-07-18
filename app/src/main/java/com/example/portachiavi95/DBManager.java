@@ -39,11 +39,8 @@ public class DBManager extends SQLiteOpenHelper {
         // funzionalità che non useremo
     }
 
-    // TODO funzioni che servono: lettura account, inserimento
-
     public void insertNewAccount(SQLiteDatabase sqLiteDatabase, Bundle account) {
 
-        // TODO: recuperare db, aprirlo in scrittura, salvare i dati nella tabella
         try(SQLiteDatabase db = getWritableDatabase()) {
             // tipo di dati "Bundle", sono chiave-valore
             // db insert si aspetta oggetto di tipo ContentValues
