@@ -100,24 +100,9 @@ public class DBManager extends SQLiteOpenHelper {
                         account.putInt("id", columnValueID);
                     }
 
-                    {   String columnName = "username";
-                        int columnIndexDESCRIZIONE = cur.getColumnIndex(columnName); // indice della colonna descrizione
-                        String columnValueDESCRIZIONE = cur.getString(columnIndexDESCRIZIONE);
-                        account.putString(columnName, columnValueDESCRIZIONE);
-                    }
-
-                    {   String columnName = "username";
-                        int columnIndexUSERNAME = cur.getColumnIndex(columnName); // indice della colonna username
-                        String columnValueUSERNAME = cur.getString(columnIndexUSERNAME);
-                        account.putString(columnName, columnValueUSERNAME);
-                    }
-
-                    {   String columnName = "password";
-                        int columnIndexPASSWORD = cur.getColumnIndex(columnName); // indice della colonna password
-                        String columnValuePASSWORD = cur.getString(columnIndexPASSWORD);
-                        account.putString(columnName, columnValuePASSWORD);
-                    }
-
+                    putStringFromCursorIntoBundle(cur, account, "descrizione");
+                    putStringFromCursorIntoBundle(cur, account, "username");
+                    putStringFromCursorIntoBundle(cur, account, "password");
                     // TODO unfinished
                 }
             }
@@ -126,5 +111,12 @@ public class DBManager extends SQLiteOpenHelper {
         }
 
         return accounts;
+    }
+
+    static private void putStringFromCursorIntoBundle(Cursor cur, Bundle bundle, String columnName){
+
+        int columnIndexPASSWORD = cur.getColumnIndex(columnName); // indice della colonna con nome columName
+        String columnValuePASSWORD = cur.getString(columnIndexPASSWORD);
+        bundle.putString(columnName, columnValuePASSWORD);
     }
 }
