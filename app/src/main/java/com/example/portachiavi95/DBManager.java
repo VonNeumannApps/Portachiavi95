@@ -47,8 +47,10 @@ public class DBManager extends SQLiteOpenHelper {
     public void insertNewAccount(SQLiteDatabase sqLiteDatabase, Bundle account) {
 
         try(SQLiteDatabase db = getWritableDatabase()) {
+
             // tipo di dati "Bundle", sono chiave-valore
-            // db insert si aspetta oggetto di tipo ContentValues
+            // lo convertiamo in "ContentValues", che è il tipo di oggetto che si aspetta la db insert
+
             ContentValues contentValues = new ContentValues();
             contentValues.put("descrizione", account.getString("descrizione"));
             contentValues.put("username", account.getString("username"));
