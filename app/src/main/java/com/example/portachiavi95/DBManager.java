@@ -95,11 +95,7 @@ public class DBManager extends SQLiteOpenHelper {
 
                     Bundle account = new Bundle();
 
-                    {   int columnIdIndexID = cur.getColumnIndex("id"); // indice della colonna id
-                        int columnValueID = cur.getInt(columnIdIndexID);
-                        account.putInt("id", columnValueID);
-                    }
-
+                    putIntFromCursorIntoBundle(cur, account, "id");
                     putStringFromCursorIntoBundle(cur, account, "descrizione");
                     putStringFromCursorIntoBundle(cur, account, "username");
                     putStringFromCursorIntoBundle(cur, account, "password");
@@ -115,8 +111,15 @@ public class DBManager extends SQLiteOpenHelper {
 
     static private void putStringFromCursorIntoBundle(Cursor cur, Bundle bundle, String columnName){
 
-        int columnIndexPASSWORD = cur.getColumnIndex(columnName); // indice della colonna con nome columName
-        String columnValuePASSWORD = cur.getString(columnIndexPASSWORD);
-        bundle.putString(columnName, columnValuePASSWORD);
+        int columnIndex = cur.getColumnIndex(columnName); // indice della colonna con nome columName
+        String columnValue = cur.getString(columnIndex);
+        bundle.putString(columnName, columnValue);
+    }
+
+    static private void putIntFromCursorIntoBundle(Cursor cur, Bundle bundle, String columnName){
+
+        int columnIndex = cur.getColumnIndex(columnName); // indice della colonna con nome columName
+        int columnValue = cur.getInt(columnIndex);
+        bundle.putInt(columnName, columnValue);
     }
 }
