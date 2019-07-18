@@ -79,13 +79,11 @@ public class DBManager extends SQLiteOpenHelper {
     public ArrayList<Bundle> getAccounts() {
 
         ArrayList<Bundle> accounts = new ArrayList<>();
+        String query = "SELECT * FROM accounts";
 
-        try (SQLiteDatabase db = getReadableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) { //TODO refactor db e cur in one single try statement
+            try(Cursor cur = db.rawQuery(query, null)) {
 
-            String query = "SELECT * FROM accounts";
-
-            // Cursor also implements the Autocloseable interface, so it can be used in the try-with-resources statemenT
-            try(Cursor cur = db.rawQuery(query, null)) { //TODO refactor db e cur in one single try statement
                 cur.moveToFirst();
 
                 while(!cur.isAfterLast()) {
