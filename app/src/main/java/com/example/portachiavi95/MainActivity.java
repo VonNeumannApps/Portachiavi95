@@ -232,8 +232,7 @@ public class MainActivity extends AppCompatActivity {
         this.baseAdapter.notifyDataSetChanged();
     }
 
-
-    void deleteAccounts() {
+    ArrayList<Bundle> getAccountsToBeDeleted() {
 
         ArrayList<Bundle> accountsToBeDeleted = new ArrayList<>();
 
@@ -245,7 +244,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        dbManager.deleteSelectedAccounts(accountsToBeDeleted);
+        return accountsToBeDeleted;
+    }
+
+    void deleteAccounts() {
+
+        dbManager.deleteSelectedAccounts(getAccountsToBeDeleted());
 
         Utilities.showShortToast(this, R.string.DELETE_SUCCESS_MESSAGE);
 
@@ -312,6 +316,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void openAccessConfirmationDialog() {
+
+        ArrayList<Bundle> accountsToBeDeleted = getAccountsToBeDeleted();
+
+        if(accountsToBeDeleted.size() == 0) {
+
+            //se nessuno è selezionato, non apriamo la dialog
+            return;
+        }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
