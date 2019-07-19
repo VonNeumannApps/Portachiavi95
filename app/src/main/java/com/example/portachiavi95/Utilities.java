@@ -21,6 +21,16 @@ public class Utilities {
     //    sapere se dobbiamo manterene l'accesso, fare il controllo, e salvare preferenza utente
     //    useremo shared preferences
 
+    private static String getMasterPassword(Context context) {
+
+        // controllo nelle shared preferences
+        SharedPreferences userData = getSharedPreferences(context);
+
+        String masterPwd = userData.getString(MASTER_PWD_OPTION_KEY, DEFAULT_EMPTY_MASTER_PWD);
+
+        return masterPwd;
+    }
+
     public static boolean isMasterPasswordSet(Context context) {
 
         boolean exists = false;
@@ -39,15 +49,7 @@ public class Utilities {
         return masterPwd.equals(pass);
     }
 
-    private static String getMasterPassword(Context context) {
 
-        // controllo nelle shared preferences
-        SharedPreferences userData = getSharedPreferences(context);
-
-        String masterPwd = userData.getString(MASTER_PWD_OPTION_KEY, DEFAULT_EMPTY_MASTER_PWD);
-
-        return masterPwd;
-    }
 
     public static boolean isAccessKept(Context context) {
 
