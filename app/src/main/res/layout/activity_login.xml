@@ -13,8 +13,8 @@
         android:padding="10dp"
         >
 
-
         <TextView
+            android:id="@+id/pwdMessageTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/rossoAcceso"
@@ -24,7 +24,6 @@
             android:justificationMode="inter_word"
             />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,30 +31,57 @@
             android:layout_marginTop="10dp"
             >
 
-            <TextView
-                android:id="@+id/pwsMessageTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/black"
-                android:text="@string/PASSWORD_TEXT"
-                android:justificationMode="inter_word"
-                />
-
             <EditText
                 android:id="@+id/pwdEditText"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:hint="@string/PASSWORD"
                 android:inputType="textPassword"
                 />
+
+            <ImageView
+                android:id="@+id/togglePasswordImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/baseline_visibility_black_24"
+                />
+            <!--id ha stesso nome di altra IV, ma sono 2 contesti diversi-->
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/baseline_create_black_36"
+                android:src="@drawable/baseline_create_black_24"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#000000"
+                android:text="@string/KEEP_ACCESS_TEXT"
+                />
+
+            <Switch
+                android:id="@+id/toggleAccessSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
                 />
 
         </LinearLayout>
@@ -64,11 +90,10 @@
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/SAVE_PWD_BUTTON_TEXT"
-            android:drawableStart="@drawable/baseline_save_black_36"
-
             android:layout_marginTop="10dp"
-            />
+            android:layout_gravity="center_horizontal"
+            android:drawableStart="@drawable/baseline_save_black_24"
+            android:text="@string/SALVA"/>
         <!--android:drawableLeft="@drawable/baseline_create_black_36"-->
 
     </LinearLayout>

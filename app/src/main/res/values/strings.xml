@@ -10,7 +10,7 @@
     <string name="Password_advice">stimola la diuresi</string>
 
     <string name="PASSWORD_TEXT">Password</string>
-    <string name="SAVE_PWD_BUTTON_TEXT">Salva</string>
+
     <string name="ELENCO_ACCOUNT">ELENCO ACCOUNT</string>
     <string name="SELECT_ALL_BUTTON">Seleziona tutto</string>
     <string name="DELETE_BUTTON">Elimina</string>
@@ -32,4 +32,7 @@
     <string name="DELETE_SUCCESS_MESSAGE">Accounts eliminati con successo!</string>
     <string name="DESELECT_ALL">Deseleziona Tutto</string>
     <string name="PASSWORD">password</string>
+    <string name="KEEP_ACCESS_TEXT">Mantieni accesso</string>
+    <string name="SALVA">Salva</string>
+    <string name="SAVE_PWD_BUTTON_TEXT">Salva</string>
 </resources>
