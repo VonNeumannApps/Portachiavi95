@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     DBManager dbManager;
 
     boolean toggleAll = false;
+    Button selectAllBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +89,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button selectAllBtn = findViewById(R.id.selectAllButton);
+        selectAllBtn = findViewById(R.id.selectAllButton);
         selectAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { //todo spiegare questo
+
                 selectAllAccounts();
             }
         });
+
     }
 
     void openAccountDetailActivity(Bundle account) {
@@ -276,14 +279,25 @@ public class MainActivity extends AppCompatActivity {
 
     void selectAllAccounts() {
 
-        boolean isSelectAll = true;
+        if (!toggleAll) {
 
-        for(Bundle account : accounts) {
+            selectAllBtn.setText(getString(R.string.DESELECT_ALL));
 
-            account.putBoolean("selected", true);
+            toggleAll = true;
+
+        } else {
+
+            selectAllBtn.setText(getString(R.string.SELECT_ALL_BUTTON));
+
+            toggleAll = false;
         }
 
-        this.baseAdapter.notifyDataSetChanged();
+        for (Bundle account : accounts) {
+
+            account.putBoolean("selected", toggleAll);
+        }
+
+        baseAdapter.notifyDataSetChanged();
     }
 
     boolean isLogged() {

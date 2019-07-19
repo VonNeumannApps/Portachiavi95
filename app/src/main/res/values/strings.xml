@@ -30,5 +30,6 @@
     <string name="Yes">Si</string>
     <string name="No">No</string>
     <string name="DELETE_SUCCESS_MESSAGE">Accounts eliminati con successo!</string>
-
+    <string name="DESELECT_ALL">Deseleziona Tutto</string>
+    <string name="PASSWORD">password</string>
 </resources>
