@@ -339,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setMessage(R.string.DELETE_CONFIRMATION_MESSAGE);
 
         builder.setCancelable(false);// utente deve scegliere o si o no
-        builder.setPositiveButton(getString(R.string.Yes), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.YES), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -349,7 +349,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // la dialog viene chiusa automaticamente passando listener null
-        builder.setNegativeButton(getString(R.string.No), null);
+        builder.setNegativeButton(getString(R.string.NO), null);
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
