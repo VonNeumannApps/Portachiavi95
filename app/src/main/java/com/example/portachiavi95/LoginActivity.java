@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
                 // devo salvarla
                 Utilities.saveMasterPassword(this, userInsertedPwd);
 
-                Toast.makeText (this,R.string.SAVED_MESSAGE,Toast.LENGTH_SHORT).show();
+                Utilities.showShortToast(this, R.string.SAVED_MESSAGE);
 
                 setResult(RESULT_OK);
                 finish();
@@ -40,27 +39,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     // msg credenziali sbagliate, resto su questa activity
-                    Toast.makeText (this, R.string.WRONG_PASSWORD_MESSAGE, Toast.LENGTH_SHORT).show();
+                    Utilities.showShortToast(this, R.string.WRONG_PASSWORD_MESSAGE);
                 }
             }
 
 
         } else {
 
-            showLongToast(R.string.PWD_WRONG_LENGTH_MESSAGE);
+            Utilities.showLongToast(this, R.string.PWD_WRONG_LENGTH_MESSAGE);
         }
-    }
-
-    private void showShortToast(int textStringId) {
-
-        String stringToShow = getString(textStringId);
-        Toast.makeText(this, stringToShow, Toast.LENGTH_SHORT).show();
-    }
-
-    private void showLongToast(int textStringId) {
-
-        String stringToShow = getString(textStringId);
-        Toast.makeText(this, stringToShow, Toast.LENGTH_LONG).show();
     }
 
     @Override

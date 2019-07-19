@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.text.InputType;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Utilities {
 
@@ -115,6 +116,18 @@ public class Utilities {
         launchCounts++;
 
         userData.edit().putInt("launchCounts", launchCounts).commit();
+    }
+
+    public static void showShortToast(Context context, int textStringId) {
+
+        String stringToShow = context.getString(textStringId);
+        Toast.makeText(context, stringToShow, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void showLongToast(Context context, int textStringId) {
+
+        String stringToShow = context.getString(textStringId);
+        Toast.makeText(context, stringToShow, Toast.LENGTH_LONG).show();
     }
 
     private static SharedPreferences getSharedPreferences(Context context) {
