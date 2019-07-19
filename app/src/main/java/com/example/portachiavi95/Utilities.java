@@ -2,6 +2,9 @@ package com.example.portachiavi95;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.InputType;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 public class Utilities {
 
@@ -21,7 +24,7 @@ public class Utilities {
     //    sapere se dobbiamo manterene l'accesso, fare il controllo, e salvare preferenza utente
     //    useremo shared preferences
 
-    private static String getMasterPassword(Context context) {
+    public static String getMasterPassword(Context context) {
 
         // controllo nelle shared preferences
         SharedPreferences userData = getSharedPreferences(context);
@@ -29,6 +32,29 @@ public class Utilities {
         String masterPwd = userData.getString(MASTER_PWD_OPTION_KEY, DEFAULT_EMPTY_MASTER_PWD);
 
         return masterPwd;
+    }
+
+    public static boolean togglePasswordVisibility(boolean isPassVisible, EditText et, ImageView iv) {
+
+        isPassVisible = !isPassVisible;
+
+        int inputType;
+        int imgResource;
+
+        if(isPassVisible) {
+            //inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD;
+            inputType = InputType.TYPE_CLASS_TEXT;
+            imgResource = R.drawable.baseline_visibility_off_black_24;
+        }
+        else {
+            inputType = InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD;
+            imgResource = R.drawable.baseline_visibility_black_24;
+        }
+
+        et.setInputType(inputType);
+        iv.setImageResource(imgResource);
+
+        return isPassVisible;
     }
 
     public static boolean isMasterPasswordSet(Context context) {

@@ -116,22 +116,6 @@ public class AccountDetailActivity extends AppCompatActivity {
 
     void togglePasswordVisibility() {
 
-        isPassVisible = !isPassVisible;
-
-        int inputType;
-        int imgResource;
-
-        if(isPassVisible) {
-            //inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD;
-            inputType = InputType.TYPE_CLASS_TEXT;
-            imgResource = R.drawable.baseline_visibility_off_black_24;
-        }
-        else {
-            inputType = InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD;
-            imgResource = R.drawable.baseline_visibility_black_24;
-        }
-
-        passET.setInputType(inputType);
-        togglePwdIV.setImageResource(imgResource);
+        isPassVisible = Utilities.togglePasswordVisibility(isPassVisible, passET, togglePwdIV);
     }
 }
