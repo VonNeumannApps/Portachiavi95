@@ -107,7 +107,7 @@ public class AccountDetailActivity extends AppCompatActivity {
             dbManager.updateAccount(account);
         }
 
-        Toast.makeText(this, R.string.SAVED_MESSAGE, Toast.LENGTH_SHORT);
+        Utilities.showShortToast(this, R.string.SAVED_MESSAGE);
 
         setResult(RESULT_OK);
 

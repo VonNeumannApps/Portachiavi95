@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbManager.deleteSelectedAccounts(accountsToBeDeleted);
 
-        Toast.makeText(this, R.string.DELETE_SUCCESS_MESSAGE, Toast.LENGTH_SHORT).show();
+        Utilities.showShortToast(this, R.string.DELETE_SUCCESS_MESSAGE);
 
         //non facciamo "notify changed" perché in questo caso è cambiato il numero degli account
         // e dobbiamo ricaricarli tutti dal db
