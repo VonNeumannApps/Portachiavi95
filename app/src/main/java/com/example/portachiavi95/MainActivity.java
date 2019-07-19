@@ -321,6 +321,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(accountsToBeDeleted.size() == 0) {
 
+            Utilities.showShortToast(this, R.string.NO_ACCOUNTS_TO_DELETE_MESSAGE);
             //se nessuno è selezionato, non apriamo la dialog
             return;
         }

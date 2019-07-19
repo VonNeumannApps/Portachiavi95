@@ -45,4 +45,5 @@
     <string name="SETTINGS">IMPOSTAZIONI</string>
 
     <string name="SETTINGS_SAVED_MESSAGE">Impostazioni salvate con successo</string>
+    <string name="NO_ACCOUNTS_TO_DELETE_MESSAGE">Nessun account selezionato</string>
 </resources>
