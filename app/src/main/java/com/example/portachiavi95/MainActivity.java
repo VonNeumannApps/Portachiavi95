@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     BaseAdapter baseAdapter;
     DBManager dbManager;
 
+    boolean toggleAll = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ImageView addAccountBtn = findViewById(R.id.addAccountButton);
-
         addAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,12 +80,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button deleteBtn = findViewById(R.id.deleteButton);
-
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 openDeletionConfirmationDialog();
+            }
+        });
+
+        Button selectAllBtn = findViewById(R.id.selectAllButton);
+        selectAllBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectAllAccounts();
             }
         });
     }
@@ -264,6 +272,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         baseAdapter.notifyDataSetChanged();
+    }
+
+    void selectAllAccounts() {
+
+        boolean isSelectAll = true;
+
+        for(Bundle account : accounts) {
+
+            account.putBoolean("selected", true);
+        }
+
+        this.baseAdapter.notifyDataSetChanged();
     }
 
     boolean isLogged() {
