@@ -139,7 +139,12 @@ public class MainActivity extends AppCompatActivity {
             }
             case Utilities.LOGIN_CODE : {
                 if(resultCode == RESULT_OK) {
-                    // toDO
+                    if (Utilities.launchCounts(this) == 0) {
+
+                        Utilities.increaseLaunchCounts(this);
+
+                        openAccessConfirmationDialog();
+                    }
                 }
             }
             default: {
@@ -244,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
 
-        startActivity(intent);
+        startActivityForResult(intent, Utilities.LOGIN_CODE);
     }
 
     void selectCurrentAccount(Bundle account) {

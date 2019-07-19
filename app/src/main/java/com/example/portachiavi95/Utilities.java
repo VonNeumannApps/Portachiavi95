@@ -70,6 +70,25 @@ public class Utilities {
         setPreference(context, MASTER_PWD_OPTION_KEY, pass);
     }
 
+
+    public static int launchCounts(Context context) {
+
+        SharedPreferences userData = context.getSharedPreferences(context.getString(R.string.USER_DATA), Context.MODE_PRIVATE);
+
+        return userData.getInt("launchCounts", 0);
+    }
+
+    public static void increaseLaunchCounts(Context context) {
+
+        SharedPreferences userData = context.getSharedPreferences(context.getString(R.string.USER_DATA), Context.MODE_PRIVATE);
+
+        int launchCounts = userData.getInt("launchCounts", 0);
+
+        launchCounts++;
+
+        userData.edit().putInt("launchCounts", launchCounts).commit();
+    }
+
     private static SharedPreferences getSharedPreferences(Context context) {
 
         SharedPreferences userData = context.getSharedPreferences(context.getString(R.string.USER_DATA), Context.MODE_PRIVATE);

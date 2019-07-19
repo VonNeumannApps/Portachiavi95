@@ -29,6 +29,9 @@
     <string name="DELETE_CONFIRMATION_MESSAGE">Sei sicuro di voler eliminare gli elementi selezionati?</string>
     <string name="Yes">Si</string>
     <string name="No">No</string>
+    <string name="YES">Si</string>
+    <string name="NO">No</string>
+
     <string name="DELETE_SUCCESS_MESSAGE">Accounts eliminati con successo!</string>
     <string name="DESELECT_ALL">Deseleziona Tutto</string>
     <string name="PASSWORD">password</string>
@@ -38,4 +41,6 @@
     <string name="LOGIN">Login</string>
 
     <string name="WRONG_PASSWORD_MESSAGE">La password inserita non è valida</string>
+
+    <string name="SETTINGS_DESCRPTION_TEXT">L\\\'opzione può essere modificata dalle impostazioni</string>
 </resources>

@@ -45,8 +45,6 @@ public class LoginActivity extends AppCompatActivity {
             }
 
 
-            finish();// ritorna alla activity precedente
-
         } else {
 
             showLongToast(R.string.PWD_WRONG_LENGTH_MESSAGE);
