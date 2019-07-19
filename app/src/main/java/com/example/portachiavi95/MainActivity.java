@@ -45,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
             openLoginActivity();
         }
 
+        inizializzaListaAccount();
+        inizializzaBottoniAddRemoveSelectAccounts();
+    }
+
+    void inizializzaListaAccount() {
+
         initializeAdapter();
         loadAccounts();
         final ListView accountsLV = findViewById(R.id.accountListView);
@@ -69,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
 
+    void inizializzaBottoniAddRemoveSelectAccounts() {
         ImageView addAccountBtn = findViewById(R.id.addAccountButton);
         addAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 selectAllAccounts();
             }
         });
-
     }
 
     void openAccountDetailActivity(Bundle account) {
