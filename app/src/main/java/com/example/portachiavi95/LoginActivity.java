@@ -13,18 +13,43 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText pwdEditText;
 
-    void saveMasterPassword(){
+    void checkForMasterPassword(){
 
-        if (pwdEditText.getText().toString().length() >= Utilities.PWD_MIN_LENGTH){
+        String userInsertedPwd = pwdEditText.getText().toString();
 
-            SharedPreferences userData = getSharedPreferences(getString(R.string.USER_DATA), MODE_PRIVATE);
+        if (userInsertedPwd.length() >= Utilities.PWD_MIN_LENGTH){
 
-            userData.edit().putString("masterPassword", pwdEditText.getText().toString()).commit();
+            // controllare se esiste master pwd , se non esiste salvarla e fare login
+            // se esiste, fare direttamente login
+            if(!Utilities.isMasterPasswordSet(this)) {
 
-            Toast.makeText (this,R.string.SAVED_MESSAGE,Toast.LENGTH_SHORT).show();
+                // devo salvarla
+                Utilities.saveMasterPassword(this, userInsertedPwd);
 
-            finish();
-        } else  Toast.makeText (this,R.string.PWD_WRONG_LENGTH_MESSAGE,Toast.LENGTH_LONG).show();
+                Toast.makeText (this,R.string.SAVED_MESSAGE,Toast.LENGTH_SHORT).show();
+
+                setResult(RESULT_OK);
+                finish();
+            }
+            else {
+
+                if(Utilities.isMasterPasswordCorrect(this, userInsertedPwd)) {
+
+                    setResult(RESULT_OK);
+                    finish();
+                }
+                else {
+                    // msg credenziali sbagliate, resto su questa activity
+                }
+            }
+
+
+            finish();// ritorna alla activity precedente
+
+        } else {
+
+            Toast.makeText(this, R.string.PWD_WRONG_LENGTH_MESSAGE, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -34,12 +59,13 @@ public class LoginActivity extends AppCompatActivity {
 
         pwdEditText = findViewById(R.id.pwdEditText);
 
-        Button saveBtn = findViewById(R.id.saveButton);
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        Button loginBtn = findViewById(R.id.loginButton);
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveMasterPassword();
+                checkForMasterPassword();
             }
         });
     }

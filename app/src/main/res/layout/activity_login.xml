@@ -41,7 +41,7 @@
                 android:inputType="textPassword"
                 />
 
-            <ImageView
+ <!--           <ImageView
                 android:id="@+id/togglePasswordImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,17 +49,17 @@
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/baseline_visibility_black_24"
                 />
-            <!--id ha stesso nome di altra IV, ma sono 2 contesti diversi-->
+            &lt;!&ndash;id ha stesso nome di altra IV, ma sono 2 contesti diversi&ndash;&gt;
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/baseline_create_black_24"
-                />
+                />-->
 
         </LinearLayout>
-
+<!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -84,16 +84,16 @@
 
                 />
 
-        </LinearLayout>
+        </LinearLayout>-->
 
         <Button
-            android:id="@+id/saveButton"
+            android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
             android:drawableStart="@drawable/baseline_save_black_24"
-            android:text="@string/SALVA"/>
+            android:text="@string/LOGIN"/>
         <!--android:drawableLeft="@drawable/baseline_create_black_36"-->
 
     </LinearLayout>
