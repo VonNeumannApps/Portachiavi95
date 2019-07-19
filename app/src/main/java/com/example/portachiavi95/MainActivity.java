@@ -137,6 +137,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             }
+            case Utilities.LOGIN_CODE : {
+                if(resultCode == RESULT_OK) {
+                    // toDO
+                }
+            }
             default: {
 
                 super.onActivityResult(requestCode, resultCode, data);
@@ -213,30 +218,6 @@ public class MainActivity extends AppCompatActivity {
         this.baseAdapter.notifyDataSetChanged();
     }
 
-    void openDeletionConfirmationDialog() {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setTitle(R.string.app_name);
-        builder.setMessage(R.string.DELETE_CONFIRMATION_MESSAGE);
-
-        builder.setCancelable(false);// utente deve scegliere o si o no
-        builder.setPositiveButton(getString(R.string.Yes), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                deleteAccounts(); // procedi con cancellazione
-                // TODO notificare dataset changed
-            }
-        });
-
-        // la dialog viene chiusa automaticamente passando listener null
-        builder.setNegativeButton(getString(R.string.No), null);
-
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
-    }
 
     void deleteAccounts() {
 
@@ -309,15 +290,64 @@ public class MainActivity extends AppCompatActivity {
 
     boolean isLogged() {
 
-        boolean logged = false;
+        // cambio il metodo di accesso all'app, controllando che ci sia
+        // mantenuto l'accesso, tramite le opzioni
 
-        SharedPreferences userData = getSharedPreferences(getString(R.string.USER_DATA), MODE_PRIVATE);
+        return Utilities.isAccessKept(this);
 
-        String pass = userData.getString("masterPassword", "");
+    }
 
-        logged = !pass.equals("");
+    void openAccessConfirmationDialog() {
 
-        return logged;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(R.string.KEEP_ACCESS_TEXT);
+        builder.setMessage(R.string.SETTINGS_DESCRPTION_TEXT);
+        builder.setCancelable(false);
+
+        builder.setPositiveButton(getString(R.string.YES), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                Utilities.saveAccess(MainActivity.this, true);
+            }
+        });
+
+        builder.setNegativeButton(getString(R.string.NO), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                Utilities.saveAccess(MainActivity.this, false);
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+
+    void openDeletionConfirmationDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(R.string.app_name);
+        builder.setMessage(R.string.DELETE_CONFIRMATION_MESSAGE);
+
+        builder.setCancelable(false);// utente deve scegliere o si o no
+        builder.setPositiveButton(getString(R.string.Yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                deleteAccounts(); // procedi con cancellazione
+                // TODO notificare dataset changed
+            }
+        });
+
+        // la dialog viene chiusa automaticamente passando listener null
+        builder.setNegativeButton(getString(R.string.No), null);
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
 
     }
 }
