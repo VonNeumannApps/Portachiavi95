@@ -36,4 +36,6 @@
     <string name="SALVA">Salva</string>
     <string name="SAVE_PWD_BUTTON_TEXT">Salva</string>
     <string name="LOGIN">Login</string>
+
+    <string name="WRONG_PASSWORD_MESSAGE">La password inserita non è valida</string>
 </resources>

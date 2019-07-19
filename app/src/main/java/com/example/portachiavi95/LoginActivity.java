@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     // msg credenziali sbagliate, resto su questa activity
+                    Toast.makeText (this, R.string.WRONG_PASSWORD_MESSAGE, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -48,8 +49,20 @@ public class LoginActivity extends AppCompatActivity {
 
         } else {
 
-            Toast.makeText(this, R.string.PWD_WRONG_LENGTH_MESSAGE, Toast.LENGTH_LONG).show();
+            showLongToast(R.string.PWD_WRONG_LENGTH_MESSAGE);
         }
+    }
+
+    private void showShortToast(int textStringId) {
+
+        String stringToShow = getString(textStringId);
+        Toast.makeText(this, stringToShow, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showLongToast(int textStringId) {
+
+        String stringToShow = getString(textStringId);
+        Toast.makeText(this, stringToShow, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -68,5 +81,12 @@ public class LoginActivity extends AppCompatActivity {
                 checkForMasterPassword();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        // "disabilitiamo" il pulsante indietro, se lo si preme non fa niente (rimuovendo la chiamata a super)
+        // in modo che l'utente non torni alla main activity senza loggarsi
     }
 }
