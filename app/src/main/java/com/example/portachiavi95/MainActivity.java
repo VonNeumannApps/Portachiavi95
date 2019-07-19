@@ -105,6 +105,15 @@ public class MainActivity extends AppCompatActivity {
                 selectAllAccounts();
             }
         });
+
+        ImageView settingsBtn = findViewById(R.id.settingsButton);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     void openAccountDetailActivity(Bundle account) {

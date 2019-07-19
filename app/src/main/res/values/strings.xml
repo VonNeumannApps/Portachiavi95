@@ -41,4 +41,8 @@
     <string name="WRONG_PASSWORD_MESSAGE">La password inserita non è valida</string>
 
     <string name="SETTINGS_DESCRPTION_TEXT">L\\\'opzione può essere modificata dalle impostazioni</string>
+    <string name="EDIT_MASTER_PASSWORD">Modifica MASTTER PASSWORD</string>
+    <string name="SETTINGS">IMPOSTAZIONI</string>
+
+    <string name="SETTINGS_SAVED_MESSAGE">Impostazioni salvate con successo</string>
 </resources>
