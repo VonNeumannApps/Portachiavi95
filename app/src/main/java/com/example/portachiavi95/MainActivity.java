@@ -5,7 +5,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -125,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtras(account);
 
         // result: ADD_OR_EDIT_CODE, per dire che ho aggiunto o modificato un elemento
-        startActivityForResult(intent, Utilities.ADD_OR_EDIT_CODE);
+        startActivityForResult(intent, Utils.ADD_OR_EDIT_CODE);
 
     }
 
@@ -135,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (requestCode) {
 
-            case Utilities.ADD_OR_EDIT_CODE: {
+            case Utils.ADD_OR_EDIT_CODE: {
 
                 if(resultCode == RESULT_OK) {
 
@@ -146,11 +144,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             }
-            case Utilities.LOGIN_CODE : {
+            case Utils.LOGIN_CODE : {
                 if(resultCode == RESULT_OK) {
-                    if (Utilities.launchCounts(this) == 0) {
+                    if (Utils.launchCounts(this) == 0) {
 
-                        Utilities.increaseLaunchCounts(this);
+                        Utils.increaseLaunchCounts(this);
 
                         openAccessConfirmationDialog();
                     }
@@ -249,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbManager.deleteSelectedAccounts(getAccountsToBeDeleted());
 
-        Utilities.showShortToast(this, R.string.DELETE_SUCCESS_MESSAGE);
+        Utils.showShortToast(this, R.string.DELETE_SUCCESS_MESSAGE);
 
         //non facciamo "notify changed" perché in questo caso è cambiato il numero degli account
         // e dobbiamo ricaricarli tutti dal db
@@ -260,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
 
-        startActivityForResult(intent, Utilities.LOGIN_CODE);
+        startActivityForResult(intent, Utils.LOGIN_CODE);
     }
 
     void selectCurrentAccount(Bundle account) {
@@ -309,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
         // cambio il metodo di accesso all'app, controllando che ci sia
         // mantenuto l'accesso, tramite le opzioni
 
-        return Utilities.isAccessKept(this);
+        return Utils.isAccessKept(this);
 
     }
 
@@ -319,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(accountsToBeDeleted.size() == 0) {
 
-            Utilities.showShortToast(this, R.string.NO_ACCOUNTS_TO_DELETE_MESSAGE);
+            Utils.showShortToast(this, R.string.NO_ACCOUNTS_TO_DELETE_MESSAGE);
             //se nessuno è selezionato, non apriamo la dialog
             return;
         }
@@ -334,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Utilities.saveAccess(MainActivity.this, true);
+                Utils.saveAccess(MainActivity.this, true);
             }
         });
 
@@ -342,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Utilities.saveAccess(MainActivity.this, false);
+                Utils.saveAccess(MainActivity.this, false);
             }
         });
 

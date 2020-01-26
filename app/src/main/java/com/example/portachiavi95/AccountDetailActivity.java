@@ -106,7 +106,7 @@ public class AccountDetailActivity extends AppCompatActivity {
             dbManager.updateAccount(account);
         }
 
-        Utilities.showShortToast(this, R.string.SAVED_MESSAGE);
+        Utils.showShortToast(this, R.string.SAVED_MESSAGE);
 
         setResult(RESULT_OK);
 
@@ -115,6 +115,6 @@ public class AccountDetailActivity extends AppCompatActivity {
 
     void togglePasswordVisibility() {
 
-        isPassVisible = Utilities.togglePasswordVisibility(isPassVisible, passET, togglePwdIV);
+        isPassVisible = Utils.togglePasswordVisibility(isPassVisible, passET, togglePwdIV);
     }
 }
