@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,5 +78,5 @@
         <!--android:drawableLeft="@drawable/baseline_create_black_36"-->
 
     </LinearLayout>
-
+    </ScrollView>
 </FrameLayout>
