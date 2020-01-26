@@ -29,12 +29,11 @@ public class AccountDetailActivity extends AppCompatActivity {
 
         if (!account.isEmpty()) {
 
-            this.descET.setText(account.getString("descrizione"));
-            this.userET.setText(account.getString("username"));
-            this.passET.setText(account.getString("password"));
-            this.mailET.setText(account.getString(Utilities.MAIL_COL));
+            this.descET.setText(account.getString(DBManager.DESCRIPTION_COL));
+            this.userET.setText(account.getString(DBManager.USERNAME_COL));
+            this.passET.setText(account.getString(DBManager.PASSWORD_COL));
+            this.mailET.setText(account.getString(DBManager.MAIL_COL));
         }
-
     }
 
     @Override
@@ -60,10 +59,12 @@ public class AccountDetailActivity extends AppCompatActivity {
             titleTV.setText(getString(R.string.NUOVO_ACCOUNT));
         }
         else {
-            titleTV.setText(getString(R.string.EDIT_ACCOUNT, account.getString("descrizione")));
+            titleTV.setText(getString(R.string.EDIT_ACCOUNT,
+                    account.getString(DBManager.DESCRIPTION_COL)));
         }
 
-        this.dbManager = new DBManager(this, DBManager.DATABASE_NAME, null, DBManager.DATABASE_VERSION);
+        this.dbManager = new DBManager(this, DBManager.DATABASE_NAME,
+                null, DBManager.DATABASE_VERSION);
 
         Button saveBtn = findViewById(R.id.saveButton);
 
@@ -94,10 +95,10 @@ public class AccountDetailActivity extends AppCompatActivity {
         // controllare se id esiste già, se no si crea. Usere db manager update o insert new account
         Boolean isNewAccount = account.isEmpty();
 
-        account.putString("descrizione",  descET.getText().toString());
-        account.putString("username",  userET.getText().toString());
-        account.putString("password",  passET.getText().toString());
-        account.putString(Utilities.MAIL_COL,  mailET.getText().toString());
+        account.putString(DBManager.DESCRIPTION_COL, descET.getText().toString());
+        account.putString(DBManager.USERNAME_COL, userET.getText().toString());
+        account.putString(DBManager.PASSWORD_COL, passET.getText().toString());
+        account.putString(DBManager.MAIL_COL, mailET.getText().toString());
 
         if(isNewAccount) {
 

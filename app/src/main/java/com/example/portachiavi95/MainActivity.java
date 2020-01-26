@@ -161,8 +161,6 @@ public class MainActivity extends AppCompatActivity {
                 super.onActivityResult(requestCode, resultCode, data);
             }
         }
-
-
     }
 
     void initializeAdapter() {
@@ -204,13 +202,13 @@ public class MainActivity extends AppCompatActivity {
                 // recupero testi
                 TextView descTV = view.findViewById(R.id.descriptionTextView);
                 TextView mailTV = view.findViewById(R.id.mailTextView);
-                descTV.setText(account.getString("descrizione"));
-                mailTV.setText(account.getString(Utilities.MAIL_COL));
+                descTV.setText(account.getString(DBManager.DESCRIPTION_COL));
+                mailTV.setText(account.getString(DBManager.MAIL_COL));
 
                 ImageView checkIV = view.findViewById(R.id.checkImageView);
 
                 // controllo se elemento è selezionato
-                if(account.getBoolean("selected")) {
+                if(account.getBoolean(DBManager.SELECTED_FIELD_NAME)) {
 
                     checkIV.setVisibility(View.VISIBLE);
 
@@ -238,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
 
         // questo for sarebbe superfluo perché ho già messo il controllo nel metodo del db manager
         for(Bundle account : accounts) {
-            if(account.getBoolean("selected")) {
+            if(account.getBoolean(DBManager.SELECTED_FIELD_NAME)) {
 
                 accountsToBeDeleted.add(account);
             }
@@ -267,15 +265,15 @@ public class MainActivity extends AppCompatActivity {
 
     void selectCurrentAccount(Bundle account) {
 
-        boolean isSelected = account.getBoolean("selected");
+        boolean isSelected = account.getBoolean(DBManager.SELECTED_FIELD_NAME);
 
-        // account.putBoolean("selected", !isSelected);
+        // account.putBoolean(DBManager.SELECTED_FIELD_NAME, !isSelected);
         // cicliamo negli accounts perché per qualche motivo, su android, a differenza di iOS
         // account non è lo stesso della lista di account (sembra assurdo..)
         for(Bundle tmpAccount : accounts) {
-            if(tmpAccount.getInt("id") == account.getInt("id")) {
+            if(tmpAccount.getInt(DBManager.ID_COL) == account.getInt(DBManager.ID_COL)) {
 
-                tmpAccount.putBoolean("selected", !isSelected);
+                tmpAccount.putBoolean(DBManager.SELECTED_FIELD_NAME, !isSelected);
                 break;
             }
         }
@@ -300,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (Bundle account : accounts) {
 
-            account.putBoolean("selected", toggleAll);
+            account.putBoolean(DBManager.SELECTED_FIELD_NAME, toggleAll);
         }
 
         baseAdapter.notifyDataSetChanged();

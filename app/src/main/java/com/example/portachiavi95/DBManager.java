@@ -21,6 +21,14 @@ public class DBManager extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "db";
     public static final int DATABASE_VERSION = 1;
 
+    public static final String SELECTED_FIELD_NAME = "selected";
+    public static final String MAIL_COL = "mail";
+    public static final String PASSWORD_COL = "password";
+    public static final String USERNAME_COL = "username";
+    public static final String ACCOUNTS_TABLE_NAME = "accounts";
+    public static final String DESCRIPTION_COL = "descrizione";
+    public static final String ID_COL = "id";
+
     public DBManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -54,13 +62,18 @@ public class DBManager extends SQLiteOpenHelper {
             // lo convertiamo in "ContentValues", che è il tipo di oggetto che si aspetta la db insert
 
             ContentValues contentValues = new ContentValues();
-            contentValues.put("descrizione", account.getString("descrizione"));
-            contentValues.put("username", account.getString("username"));
-            contentValues.put("password", account.getString("password"));
-            contentValues.put(Utilities.MAIL_COL, account.getString(Utilities.MAIL_COL));
+            setAccountMainFieldsToContentValues(contentValues, account);
 
-            db.insert("accounts", null, contentValues);
+            db.insert(ACCOUNTS_TABLE_NAME, null, contentValues);
         }
+    }
+
+    public static void setAccountMainFieldsToContentValues(
+            ContentValues contentValues, Bundle account) {
+        contentValues.put(DESCRIPTION_COL, account.getString(DESCRIPTION_COL));
+        contentValues.put(USERNAME_COL, account.getString(USERNAME_COL));
+        contentValues.put(PASSWORD_COL, account.getString(PASSWORD_COL));
+        contentValues.put(MAIL_COL, account.getString(MAIL_COL));
     }
 
     public void updateAccount(Bundle account) {
@@ -69,18 +82,14 @@ public class DBManager extends SQLiteOpenHelper {
 
             ContentValues contentValues = new ContentValues();
 
-            contentValues.put("id", account.getInt("id"));
-            contentValues.put("descrizione", account.getString("descrizione"));
-            contentValues.put("username", account.getString("username"));
-            contentValues.put("password", account.getString("password"));
-            contentValues.put(Utilities.MAIL_COL, account.getString(Utilities.MAIL_COL));
+            contentValues.put(ID_COL, account.getInt(ID_COL));
+            setAccountMainFieldsToContentValues(contentValues, account);
 
-            String account_id = String.valueOf(account.getInt("id"));
+            String account_id = String.valueOf(account.getInt(ID_COL));
 
             String[] args = new String[]{account_id};
 
-            db.update("accounts", contentValues, "id=?", args);
-
+            db.update(ACCOUNTS_TABLE_NAME, contentValues, ID_COL + "=?", args);
         }
     }
 
@@ -98,19 +107,18 @@ public class DBManager extends SQLiteOpenHelper {
 
                     Bundle account = new Bundle();
 
-                    putIntFromCursorIntoBundle(cur, account, "id");
-                    putStringFromCursorIntoBundle(cur, account, "descrizione");
-                    putStringFromCursorIntoBundle(cur, account, "username");
-                    putStringFromCursorIntoBundle(cur, account, "password");
-                    putStringFromCursorIntoBundle(cur, account, Utilities.MAIL_COL);
+                    putIntFromCursorIntoBundle(cur, account, ID_COL);
+                    putStringFromCursorIntoBundle(cur, account, DESCRIPTION_COL);
+                    putStringFromCursorIntoBundle(cur, account, USERNAME_COL);
+                    putStringFromCursorIntoBundle(cur, account, PASSWORD_COL);
+                    putStringFromCursorIntoBundle(cur, account, MAIL_COL);
 
-                    account.putBoolean("selected", false);
+                    account.putBoolean(SELECTED_FIELD_NAME, false);
 
                     accounts.add(account);
                     cur.moveToNext();
                 }
             }
-
         }
 
         return accounts;
@@ -124,9 +132,9 @@ public class DBManager extends SQLiteOpenHelper {
 
         for(Bundle account : accounts) {
 
-            if(account.getBoolean("selected"))
+            if(account.getBoolean(SELECTED_FIELD_NAME))
             {
-                int idToAdd = account.getInt("id");
+                int idToAdd = account.getInt(ID_COL);
 
                 if(isFirstIdToDelete) {
 

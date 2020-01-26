@@ -13,8 +13,6 @@ public class Utilities {
     public static final int ADD_OR_EDIT_CODE = 1000; // numero arbitrario
     public static final int LOGIN_CODE = 1001;
 
-    public static final String MAIL_COL = "mail";
-
     private static final String DEFAULT_EMPTY_MASTER_PWD = "";
     private static final String MASTER_PWD_OPTION_KEY = "masterPassword";
     private static final String ACCESS_KETP_OPTION_KEY = "access";
