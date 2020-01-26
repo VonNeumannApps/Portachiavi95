@@ -39,7 +39,7 @@ public class DBManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // prima funzione, eseguita solo quando il db non esiste
 
-        String query = "CREATE TABLE accounts " +
+        String query = "CREATE TABLE " + ACCOUNTS_TABLE_NAME + " " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "descrizione TEXT, " +
                 "username TEXT, " +
@@ -126,7 +126,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     public static String getDeletionQuerySelectedAccounts(ArrayList<Bundle> accounts) {
 
-        String query = "DELETE FROM accounts WHERE id IN (";
+        String query = "DELETE FROM " + ACCOUNTS_TABLE_NAME + " WHERE id IN (";
 
         boolean isFirstIdToDelete = true;
 
