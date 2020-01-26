@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/DESCRIPTION_TEXT"
+            android:text="@string/DESCRIPTION_LABEL"
             />
 
         <EditText
@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/USERNAME_TEXT"
+            android:text="@string/USERNAME_LABEL"
             />
 
         <EditText
@@ -66,7 +66,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/PASSWORD_TEXT"
+            android:text="@string/PASSWORD_LABEL"
             />
 
         <LinearLayout
@@ -97,7 +97,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/MAIL_TEXT"
+            android:text="@string/MAIL_LABEL"
             />
 
         <EditText

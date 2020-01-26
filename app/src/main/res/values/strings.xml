@@ -9,7 +9,7 @@
     <string name="APPLICATION_MASTER_PWD_EDIT_TEXT">Premere sul pulsante modifica per modificare la password di accesso.</string>
     <string name="Password_advice">stimola la diuresi</string>
 
-    <string name="PASSWORD_TEXT">Password</string>
+    <string name="PASSWORD_LABEL">Password</string>
 
     <string name="ELENCO_ACCOUNT">ELENCO ACCOUNT</string>
     <string name="SELECT_ALL_BUTTON">Seleziona tutto</string>
@@ -18,9 +18,9 @@
     <string name="SAVED_MESSAGE">Salvataggio effettuato!</string>
     <string name="PWD_WRONG_LENGTH_MESSAGE">La password deve essere almeno di 8 caratteri</string>
     <string name="NUOVO_ACCOUNT">NUOVO ACCOUNT</string>
-    <string name="DESCRIPTION_TEXT">Descrizione:</string>
-    <string name="USERNAME_TEXT">Username</string>
-    <string name="MAIL_TEXT">E-mail</string>
+    <string name="DESCRIPTION_LABEL">Descrizione:</string>
+    <string name="USERNAME_LABEL">Username</string>
+    <string name="MAIL_LABEL">E-mail</string>
 
     <string name="EDIT_ACCOUNT">Modifica account - %1$s</string>
     <!--NB si possono mettere dei parametri nei valori stringa, con %1$s -->
@@ -35,7 +35,7 @@
     <string name="PASSWORD">password</string>
     <string name="KEEP_ACCESS_TEXT">Mantieni accesso</string>
     <string name="SALVA">Salva</string>
-    <string name="SAVE_PWD_BUTTON_TEXT">Salva</string>
+    <string name="SAVE_PWD_BUTTON_LABEL">Salva</string>
     <string name="LOGIN">Login</string>
 
     <string name="WRONG_PASSWORD_MESSAGE">La password inserita non è valida</string>
