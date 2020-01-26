@@ -22,12 +22,12 @@ public class DBManager extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
 
     public static final String ACCOUNTS_TABLE_NAME = "accounts";
-    public static final String SELECTED_FIELD_NAME = "selected";
+    public static final String ID_COL = "id";
     public static final String MAIL_COL = "mail";
     public static final String PASSWORD_COL = "password";
     public static final String USERNAME_COL = "username";
     public static final String DESCRIPTION_COL = "descrizione";
-    public static final String ID_COL = "id";
+    public static final String SELECTED_FIELD_NAME = "selected";
 
     public DBManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
