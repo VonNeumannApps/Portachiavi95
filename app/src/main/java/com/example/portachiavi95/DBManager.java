@@ -96,7 +96,7 @@ public class DBManager extends SQLiteOpenHelper {
     public ArrayList<Bundle> getAccounts() {
 
         ArrayList<Bundle> accounts = new ArrayList<>();
-        String query = "SELECT * FROM accounts";
+        String query = "SELECT * FROM " + ACCOUNTS_TABLE_NAME;
 
         try (SQLiteDatabase db = getReadableDatabase()) { //TODO refactor db e cur in one single try statement
             try(Cursor cur = db.rawQuery(query, null)) {
