@@ -1,4 +1,4 @@
-package com.example.portachiavi95;
+package com.example.portachiavi95.C;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
+
+import com.example.portachiavi95.R;
+import com.example.portachiavi95.Utils;
 
 public class SettingsActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.portachiavi95;
+package com.example.portachiavi95.C;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +16,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.portachiavi95.DBManager;
+import com.example.portachiavi95.R;
+import com.example.portachiavi95.Utils;
 
 import java.util.ArrayList;
 
